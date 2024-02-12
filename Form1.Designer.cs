@@ -10,6 +10,7 @@ partial class Form1
     private Panel topPanel;
     private Button backButton;
     private Button forwardButton;
+    private string previousPath;
 
     protected override void Dispose(bool disposing)
     {
@@ -49,18 +50,33 @@ partial class Form1
         backButton.Location = new System.Drawing.Point(5, 5);
         backButton.BackColor = Color("#333333");
         backButton.Size = new System.Drawing.Size(80, 30);
-        backButton.Text = "Back";
+        backButton.Text = "<-";
         backButton.ForeColor = Color("#ffffff");
         backButton.Click += BackButton;
-
         topPanel.Controls.Add(backButton);
+
+        forwardButton = new();
+        forwardButton.Location = new System.Drawing.Point(90, 5);
+        forwardButton.BackColor = Color("#333333");
+        forwardButton.Size = new System.Drawing.Size(80, 30);
+        forwardButton.Text = "->";
+        forwardButton.ForeColor = Color("#ffffff");
+        forwardButton.Click += ForwardButton;
+        topPanel.Controls.Add(forwardButton);
     }
 
     private void BackButton(object sender, EventArgs e)
     {
+        previousPath = currentPath;
         List<string> newPath = new(currentPath.Split("\\"));
         newPath.RemoveAt(newPath.Count - 1);
         currentPath = string.Join("\\", newPath);
+        this.Text = "Phile Explorer - " + currentPath;
+    }
+
+    private void ForwardButton(object sender, EventArgs e)
+    {
+        currentPath = previousPath;
         this.Text = "Phile Explorer - " + currentPath;
     }
 
