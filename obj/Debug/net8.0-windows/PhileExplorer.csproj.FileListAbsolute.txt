@@ -1,0 +1,14 @@
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\bin\Debug\net8.0-windows\PhileExplorer.exe
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\bin\Debug\net8.0-windows\PhileExplorer.deps.json
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\bin\Debug\net8.0-windows\PhileExplorer.runtimeconfig.json
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\bin\Debug\net8.0-windows\PhileExplorer.dll
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\bin\Debug\net8.0-windows\PhileExplorer.pdb
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\PhileExplorer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\PhileExplorer.AssemblyInfoInputs.cache
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\PhileExplorer.AssemblyInfo.cs
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\PhileExplorer.csproj.CoreCompileInputs.cache
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\PhileExplorer.dll
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\refint\PhileExplorer.dll
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\PhileExplorer.pdb
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\PhileExplorer.genruntimeconfig.cache
+C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\ref\PhileExplorer.dll
