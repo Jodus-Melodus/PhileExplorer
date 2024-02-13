@@ -1,6 +1,4 @@
-﻿using System.Drawing.Design;
-
-namespace PhileExplorer;
+﻿namespace PhileExplorer;
 
 partial class Form1
 {
@@ -11,6 +9,8 @@ partial class Form1
     private Button backButton;
     private Button forwardButton;
     private string previousPath;
+    private Panel filePanel;
+    private TextBox pathTextBox;
 
     protected override void Dispose(bool disposing)
     {
@@ -46,23 +46,51 @@ partial class Form1
         treeViewPanel.BackColor = Color("#353535");
         this.Controls.Add(treeViewPanel);
 
+        filePanel = new();
+        filePanel.Location = new Point(treeViewPanel.Width, topPanel.Height);
+        filePanel.Width = this.Width;
+        filePanel.Height = this.Height - topPanel.Height;
+        filePanel.BackColor = Color("#242424");
+        filePanel.AutoScroll = true;
+        this.Controls.Add(filePanel);
+
         backButton = new();
-        backButton.Location = new System.Drawing.Point(5, 5);
+        backButton.Location = new Point(5, 5);
         backButton.BackColor = Color("#333333");
         backButton.Size = new System.Drawing.Size(80, 30);
-        backButton.Text = "<-";
+        backButton.Text = "<";
+        backButton.FlatStyle = FlatStyle.Flat;
+        backButton.FlatAppearance.BorderSize = 0;
         backButton.ForeColor = Color("#ffffff");
         backButton.Click += BackButton;
         topPanel.Controls.Add(backButton);
 
         forwardButton = new();
-        forwardButton.Location = new System.Drawing.Point(90, 5);
+        forwardButton.Location = new Point(90, 5);
         forwardButton.BackColor = Color("#333333");
         forwardButton.Size = new System.Drawing.Size(80, 30);
-        forwardButton.Text = "->";
+        forwardButton.Text = ">";
+        forwardButton.FlatStyle = FlatStyle.Flat;
+        forwardButton.FlatAppearance.BorderSize = 0;
         forwardButton.ForeColor = Color("#ffffff");
         forwardButton.Click += ForwardButton;
         topPanel.Controls.Add(forwardButton);
+    }
+
+    private void UpdatePath(string newPath)
+    {
+        if (Directory.Exists(newPath))
+        {
+            foreach (Control control in filePanel.Controls)
+            {
+                control.Dispose();
+            }
+            filePanel.Controls.Clear();
+
+            currentPath = newPath;
+            this.Text = "Phile Explorer - " + currentPath;
+            DisplayFiles();
+        }
     }
 
     private void BackButton(object sender, EventArgs e)
@@ -70,14 +98,41 @@ partial class Form1
         previousPath = currentPath;
         List<string> newPath = new(currentPath.Split("\\"));
         newPath.RemoveAt(newPath.Count - 1);
-        currentPath = string.Join("\\", newPath);
-        this.Text = "Phile Explorer - " + currentPath;
+        UpdatePath(string.Join("\\", newPath));
+    }
+
+    private void DisplayFiles()
+    {
+        string[] files = GetCurrentFiles();
+        int count = 0;
+        int fileButtonHeight = 30;
+
+        foreach (string filePath in files)
+        {
+            Button file = new();
+            file.Text = Path.GetFileName(filePath);
+            file.Height = fileButtonHeight;
+            file.Location = new Point(0, count * fileButtonHeight);
+            file.ForeColor = Color("#eeeeee");
+            file.Width = 200;
+            file.TextAlign = ContentAlignment.MiddleLeft;
+            file.FlatStyle = FlatStyle.Flat;
+            file.FlatAppearance.BorderSize = 0;
+            file.Click += (sender, e) => ChangePathToFile(sender, e, filePath);
+            filePanel.Controls.Add(file);
+
+            count++;
+        }
+    }
+
+    private void ChangePathToFile(object sender, EventArgs e, string filePath)
+    {
+        UpdatePath(filePath);
     }
 
     private void ForwardButton(object sender, EventArgs e)
     {
-        currentPath = previousPath;
-        this.Text = "Phile Explorer - " + currentPath;
+        UpdatePath(previousPath);
     }
 
     private System.Drawing.Color Color(string hex)
@@ -87,9 +142,7 @@ partial class Form1
 
     private string[] GetCurrentFiles()
     {
-        string directoryPath = Path.GetDirectoryName(currentPath);
-
-        string[] siblingFiles = Directory.GetFiles(directoryPath);
+        string[] siblingFiles = Directory.GetDirectories(currentPath).Concat(Directory.GetFiles(currentPath)).ToArray();
 
         return siblingFiles;
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Philip Gricius\\desktop\\programming\\c#\\PhileExplorer\\PhileExplorer.csproj": {}
+    "C:\\Users\\Philip Gricius\\desktop\\Programming\\C#\\PhileExplorer\\PhileExplorer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Philip Gricius\\desktop\\programming\\c#\\PhileExplorer\\PhileExplorer.csproj": {
+    "C:\\Users\\Philip Gricius\\desktop\\Programming\\C#\\PhileExplorer\\PhileExplorer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Philip Gricius\\desktop\\programming\\c#\\PhileExplorer\\PhileExplorer.csproj",
+        "projectUniqueName": "C:\\Users\\Philip Gricius\\desktop\\Programming\\C#\\PhileExplorer\\PhileExplorer.csproj",
         "projectName": "PhileExplorer",
-        "projectPath": "C:\\Users\\Philip Gricius\\desktop\\programming\\c#\\PhileExplorer\\PhileExplorer.csproj",
+        "projectPath": "C:\\Users\\Philip Gricius\\desktop\\Programming\\C#\\PhileExplorer\\PhileExplorer.csproj",
         "packagesPath": "C:\\Users\\Philip Gricius\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Philip Gricius\\desktop\\programming\\c#\\PhileExplorer\\obj\\",
+        "outputPath": "C:\\Users\\Philip Gricius\\desktop\\Programming\\C#\\PhileExplorer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Philip Gricius\\AppData\\Roaming\\NuGet\\NuGet.Config"
