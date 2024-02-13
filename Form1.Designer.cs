@@ -27,11 +27,12 @@ partial class Form1
 
         this.components = new System.ComponentModel.Container();
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.ClientSize = new System.Drawing.Size(screenSize.Width / 2, screenSize.Height / 2);
-        this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        this.ClientSize = new System.Drawing.Size(screenSize.Width, screenSize.Height);
+        this.WindowState = FormWindowState.Maximized;
         this.MaximizeBox = false;
         this.BackColor = Color("#303030");
         this.Text = "Phile Explorer - " + currentPath;
+        this.Font = new Font("Consolas", 12, FontStyle.Regular);
 
         topPanel = new();
         topPanel.Height = 50;
@@ -57,7 +58,7 @@ partial class Form1
         backButton = new();
         backButton.Location = new Point(5, 5);
         backButton.BackColor = Color("#333333");
-        backButton.Size = new System.Drawing.Size(80, 30);
+        backButton.Size = new Size(80, 30);
         backButton.Text = "<";
         backButton.FlatStyle = FlatStyle.Flat;
         backButton.FlatAppearance.BorderSize = 0;
@@ -68,13 +69,32 @@ partial class Form1
         forwardButton = new();
         forwardButton.Location = new Point(90, 5);
         forwardButton.BackColor = Color("#333333");
-        forwardButton.Size = new System.Drawing.Size(80, 30);
+        forwardButton.Size = new Size(80, 30);
         forwardButton.Text = ">";
         forwardButton.FlatStyle = FlatStyle.Flat;
         forwardButton.FlatAppearance.BorderSize = 0;
         forwardButton.ForeColor = Color("#ffffff");
         forwardButton.Click += ForwardButton;
         topPanel.Controls.Add(forwardButton);
+
+        pathTextBox = new();
+        pathTextBox.Location = new Point(180, 10);
+        pathTextBox.Size = new Size(800, 30);
+        pathTextBox.Text = currentPath;
+        pathTextBox.KeyDown += UpdatePathToUserEnteredPath;
+        pathTextBox.BackColor = Color("#333333");
+        pathTextBox.BorderStyle = BorderStyle.None;
+        pathTextBox.ForeColor = Color("#eeeeee");
+        topPanel.Controls.Add(pathTextBox);
+    }
+
+    private void UpdatePathToUserEnteredPath(object sender, KeyEventArgs e)
+    {
+        if (e.KeyCode == Keys.Enter)
+        {
+            TextBox textBox = (TextBox)sender;
+            UpdatePath(textBox.Text);
+        }
     }
 
     private void UpdatePath(string newPath)
@@ -88,6 +108,7 @@ partial class Form1
             filePanel.Controls.Clear();
 
             currentPath = newPath;
+            pathTextBox.Text = currentPath;
             this.Text = "Phile Explorer - " + currentPath;
             DisplayFiles();
         }
