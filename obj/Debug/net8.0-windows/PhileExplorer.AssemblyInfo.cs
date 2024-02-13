@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PhileExplorer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c801f843ca3a32fc8006ad8d242e931f907a16d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db883a82bfba3303516280b567a0e3e5f55e8d5c")]
 [assembly: System.Reflection.AssemblyProductAttribute("PhileExplorer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PhileExplorer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

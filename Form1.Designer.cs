@@ -11,6 +11,8 @@ partial class Form1
     private string previousPath;
     private Panel filePanel;
     private TextBox pathTextBox;
+    private ContextMenuStrip rightClickFileMenu;
+    private string Clipboard;
 
     protected override void Dispose(bool disposing)
     {
@@ -33,6 +35,19 @@ partial class Form1
         this.BackColor = Color("#303030");
         this.Text = "Phile Explorer - " + currentPath;
         this.Font = new Font("Consolas", 12, FontStyle.Regular);
+
+        rightClickFileMenu = new();
+        rightClickFileMenu.BackColor = Color("#303030");
+        rightClickFileMenu.ForeColor = Color("#eeeeee");
+        ToolStripMenuItem fileRightClickCut = new("Cut");
+        ToolStripMenuItem fileRightClickCopy = new("Copy");
+        ToolStripMenuItem fileRightClickPaste = new("Paste");
+        fileRightClickCut.Click += CutFile;
+        fileRightClickCopy.Click += CopyFile;
+        fileRightClickPaste.Click += PasteFile;
+        rightClickFileMenu.Items.Add(fileRightClickCut);
+        rightClickFileMenu.Items.Add(fileRightClickCopy);
+        rightClickFileMenu.Items.Add(fileRightClickPaste);
 
         topPanel = new();
         topPanel.Height = 50;
@@ -79,13 +94,30 @@ partial class Form1
 
         pathTextBox = new();
         pathTextBox.Location = new Point(180, 10);
-        pathTextBox.Size = new Size(800, 30);
+        pathTextBox.Size = new Size(screenSize.Width - treeViewPanel.Width, 30);
         pathTextBox.Text = currentPath;
         pathTextBox.KeyDown += UpdatePathToUserEnteredPath;
         pathTextBox.BackColor = Color("#333333");
         pathTextBox.BorderStyle = BorderStyle.None;
         pathTextBox.ForeColor = Color("#eeeeee");
         topPanel.Controls.Add(pathTextBox);
+
+        DisplayFiles();
+    }
+
+    private void CutFile(object sender, EventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void CopyFile(object sender, EventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void PasteFile(object sender, EventArgs e)
+    {
+        throw new NotImplementedException();
     }
 
     private void UpdatePathToUserEnteredPath(object sender, KeyEventArgs e)
@@ -135,20 +167,27 @@ partial class Form1
             file.Height = fileButtonHeight;
             file.Location = new Point(0, count * fileButtonHeight);
             file.ForeColor = Color("#eeeeee");
-            file.Width = 200;
+            file.Width = 400;
             file.TextAlign = ContentAlignment.MiddleLeft;
             file.FlatStyle = FlatStyle.Flat;
             file.FlatAppearance.BorderSize = 0;
-            file.Click += (sender, e) => ChangePathToFile(sender, e, filePath);
+            file.MouseDown += (sender, e) => FileClick(sender, e, filePath);
             filePanel.Controls.Add(file);
 
             count++;
         }
     }
 
-    private void ChangePathToFile(object sender, EventArgs e, string filePath)
+    private void FileClick(object sender, MouseEventArgs e, string filePath)
     {
-        UpdatePath(filePath);
+        if (e.Button == MouseButtons.Left)
+        {
+            UpdatePath(filePath);
+        }
+        else if (e.Button == MouseButtons.Right)
+        {
+            rightClickFileMenu.Show((Control)sender, e.Location);
+        }
     }
 
     private void ForwardButton(object sender, EventArgs e)

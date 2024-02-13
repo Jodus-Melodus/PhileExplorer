@@ -12,3 +12,4 @@ C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-wi
 C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\PhileExplorer.pdb
 C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\PhileExplorer.genruntimeconfig.cache
 C:\Users\Philip Gricius\desktop\programming\c#\PhileExplorer\obj\Debug\net8.0-windows\ref\PhileExplorer.dll
+C:\Users\Philip Gricius\desktop\Programming\C#\PhileExplorer\obj\Debug\net8.0-windows\PhileExplorer.sourcelink.json
